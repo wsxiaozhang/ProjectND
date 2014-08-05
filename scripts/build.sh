@@ -18,7 +18,6 @@ do
     docker run --rm=true -v $work_dir:/work_dir -v $cache_dir:/build_cache  $image_name  "/bin/bash" "/work_dir/build_app"
     if [ "$?" == "0" ]; then
       echo "run image successfully!"
-      exit 0
     else
       echo "run image failed!!"
       exit 1
