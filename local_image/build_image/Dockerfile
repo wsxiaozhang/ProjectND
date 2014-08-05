@@ -4,7 +4,7 @@
 
 FROM javabaseimage
 MAINTAINER Nick Stinemates, Thatcher Peskens
-run apt-get install update
+run apt-get update
 run apt-get install -y maven2
 
 run sed -i 's#<localRepository>/path/to/local/repo</localRepository>#--><localRepository>/work_dir/.m2/repository</localRepository><!--#g' /etc/maven2/settings.xml

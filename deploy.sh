@@ -16,4 +16,4 @@ for port in $ports_arr
 do 
   ports_str="$ports_str -p $port "
 done
-docker run  -d  -v $2:/work_dir $ports_str $1  "/bin/bash" "/work_dir/run_app"
+docker run  -d  -v $work_dir:/work_dir $ports_str $1  "/bin/bash" "/work_dir/run_app"
