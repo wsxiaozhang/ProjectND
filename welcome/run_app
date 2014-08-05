@@ -1,0 +1,8 @@
+#! /bin/bash
+
+base_dir="$(cd "$(dirname "$0")"; pwd)"
+
+cp $base_dir/welcome/target/welcome*.war /tomcat/webapps/welcome.war
+
+/tomcat/bin/startup.sh && tail -f /tomcat/logs/catalina.out
+
