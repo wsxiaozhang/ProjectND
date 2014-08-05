@@ -1,15 +1,23 @@
 #! /bin/bash
 
-if [ "$#" -lt "2" ]; then
-  echo "$0 image_name ports" 
-  echo "for example: $0 buildimage \"8080 8888:8088\""
-  exit 1
+if [ "$#" -eq "0" ]; then
+  echo "you can use: $0 port port ... to set port mapping from host to container" 
+  echo "for example: $0 8080 8888:8088"
 fi
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 
-base_image="$1"
+base_image=""
+deploy_cache=${base_dir}/.tmp_deploy
+if [ -f "$deploy_cache" ];then
+  base_image=`cat $deploy_cache`
+fi
+ 
+if [ "$base_image" == "" ]; then
+  base_image=`date +%N`
+  echo "$base_image" > $deploy_cache
+fi
 work_dir=${base_dir}/work_dir
-ports="$2"
+ports="$*"
 ports_arr=(${ports})
 ports_str=" "
 for port in $ports_arr 
