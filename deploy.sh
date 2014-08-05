@@ -11,7 +11,6 @@ base_image="$1"
 work_dir="$2"
 ports="$3"
 ports_arr=(${ports})
-echo $ports_arr
 ports_str=" "
 for port in $ports_arr 
 do 
