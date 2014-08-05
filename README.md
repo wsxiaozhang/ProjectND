@@ -3,7 +3,10 @@ ProjectND
 
 Sample project for testing dCloud
 
-* Project structure
+* Prerequisites
+  1. docker >= v1.0 
+  2. git client
+  3. be able to access private docker image repository http://9.181.27.216:8080
 
 * How to Run
   1. git clone https://github.com/wsxiaozhang/ProjectND.git
@@ -14,4 +17,6 @@ Sample project for testing dCloud
   5. $./build.sh 
   6. $./deploy.sh 8080:8080
   7. in browser, visit http://127.0.0.1:8080/welcome
+
+* Project structure
 
