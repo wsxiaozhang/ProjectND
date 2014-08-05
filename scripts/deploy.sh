@@ -21,7 +21,7 @@ do
 done
 docker build --force-rm=true -t "$image_name" $image_dir
 if [ "$?" == "0" ]; then
-#  docker rm -f "${base_image}_container"
+  docker rm -f "${image_name}_container"
   docker run --name="${image_name}_container" -d -v $work_dir:/work_dir $ports_str  $image_name  "/bin/bash" "/work_dir/run_app"
   if [ "$?" == "0" ]; then
     echo "run image successfully!"
