@@ -1,7 +1,7 @@
 #! /bin/bash
 
 if [ "$#" -lt "1" ]; then
-  echo "$0 image_name work_dir"
+  echo "$0 image_name"
   exit 1
 fi
 base_dir="$(cd "$(dirname "$0")"; pwd)"

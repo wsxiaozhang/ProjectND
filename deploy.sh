@@ -1,8 +1,8 @@
 #! /bin/bash
 
 if [ "$#" -lt "2" ]; then
-  echo "$0 image_name work_dir ports" 
-  echo "for example: $0 buildimage ./work_dir \"8080 8888:8088\""
+  echo "$0 image_name ports" 
+  echo "for example: $0 buildimage \"8080 8888:8088\""
   exit 1
 fi
 base_dir="$(cd "$(dirname "$0")"; pwd)"
