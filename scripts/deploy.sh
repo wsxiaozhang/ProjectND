@@ -3,6 +3,7 @@
 if [ "$#" -lt "2" ]; then
   echo "you can use: $0 project_name \"port port\" to set port mapping from host to container" 
   echo "for example: $0 helloworld  \"8080 8888:8088 127.0.0.1:8080:8080\" "
+  exit 1
 fi
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 
