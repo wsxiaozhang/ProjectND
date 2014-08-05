@@ -1,6 +1,6 @@
 #! /bin/bash
 
 base_dir="$(cd "$(dirname "$0")"; pwd)"
-cd $base_dir/welcome
+cd $base_dir
 
 mvn install

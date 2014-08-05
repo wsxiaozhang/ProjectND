@@ -15,7 +15,7 @@ do
   mkdir -p $cache_dir
     docker build --force-rm=true -t "$image_name"  $image_dir
   if [ "$?" == "0" ]; then
-    docker run --rm=true -v $work_dir:/work_dir/$p_name -v $cache_dir:/work_dir/cache  $image_name  "/bin/bash" "/work_dir/$p_name/build_app"
+    docker run --rm=true -v $work_dir:/work_dir -v $cache_dir:/build_cache  $image_name  "/bin/bash" "/work_dir/build_app"
     if [ "$?" == "0" ]; then
       echo "run image successfully!"
       exit 0

@@ -2,7 +2,7 @@
 
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 
-cp $base_dir/welcome/target/welcome*.war /tomcat/webapps/welcome.war
+cp $base_dir/target/goodbye*.war /tomcat/webapps/bye.war
 
 /tomcat/bin/startup.sh && tail -f /tomcat/logs/catalina.out
 
