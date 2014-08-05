@@ -2,7 +2,7 @@
 
 # set REDIS_HOST and REDIS_PORT to your local settings
 
-FROM javabaseimage
+FROM 9.181.27.216/javabaseimage
 MAINTAINER Nick Stinemates, Thatcher Peskens
 run apt-get update
 run apt-get install -y wget
