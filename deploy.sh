@@ -18,8 +18,8 @@ do
 done
 docker build --force-rm=true -t "$base_image" $base_dir/local_image/deploy_image
 if [ "$?" == "0" ]; then
-#  docker kill "$base_image"
-  docker run  -d -v $work_dir:/work_dir $ports_str  $base_image  "/bin/bash" "/work_dir/run_app"
+  docker rm -f "${base_image}_container"
+  docker run --name="${base_image}_container" -d -v $work_dir:/work_dir $ports_str  $base_image  "/bin/bash" "/work_dir/run_app"
   if [ "$?" == "0" ]; then
     echo "run image successfully!"
     exit 0
