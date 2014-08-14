@@ -4,6 +4,9 @@
 
 FROM 9.181.27.216/javabaseimage
 MAINTAINER HaiRui Zhang, Kai Zhang
+add ./alternative.sources.list /etc/apt/alternative.sources.list
+run cat /etc/apt/alternative.sources.list > /etc/apt/sources.list
+run rm /etc/apt/alternative.sources.list
 run apt-get update
 run apt-get install -y maven2
 
