@@ -9,6 +9,6 @@
 </head>
 
 <body>
-<h1>welcome xs</hi>
+<h1>Welcome to dCloud! Have fun!</hi>
 </body>
 </html>
