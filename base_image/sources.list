@@ -1,0 +1,7 @@
+deb http://mirrors.aliyun.com/ubuntu/ precise main
+
+deb http://mirrors.aliyun.com/ubuntu/ precise-updates main
+
+deb http://mirrors.aliyun.com/ubuntu/ precise universe
+deb http://mirrors.aliyun.com/ubuntu/ precise-updates universe
+
