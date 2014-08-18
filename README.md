@@ -13,6 +13,7 @@ Sample project for testing dCloud
 
 
 * How to Run
+
   * Local Dev and Test
 
     1. git clone https://github.com/wsxiaozhang/ProjectND.git
@@ -24,13 +25,25 @@ Sample project for testing dCloud
     6. $sudo ./deploy.sh 8080:8080
     7. in browser, visit http://127.0.0.1:8080/welcome
   
+  * Local Debug
+  
+    I. Debug Web application with Tomcat 7
+      just following above 5 steps to get application build. 
+      Note: in order to keep local test independent to debug, pls use bind different ports for application running. There has to be only one application instance binds to one specific port on the host OS.
+      In this sample of debug, the application (welcome_servlet) listens to 8888 for web request, while it listens to 7778 for accepting debug packets.
+      6. $sudo ./debug_web.sh
+      7. in eclipse, edit "debug configuration" against the web application project. 
+          New a remote debug configuration, by attaching to "localhost", "7778" and "dt_socket" stack.
+          Apply those changes, and go on debug with this configuration.
+          If the remote debug connection established successfully, then eclipse will prompt you to switch to "debug" perspective.
+      8. in browser, visit http://127.0.0.1:8888/hello and click on the hyperlink to trigger a servlet action
+      9. in eclipse, the debugger should run to the latest breakpoint in application code.
+  
   * Publish app to cloud
-    following above 5 steps to get application build
+    
+    just following above 5 steps of "Local Dev and Test" to get application build
     6. $sudo ./publish.sh welcome welcome.de.bluemix.cdl.ibm.com
     7. after a while, in brower, visit http://welcome.de.bluemix.cdl.ibm.com 
-
-
-
 
 
 * Project structure 
