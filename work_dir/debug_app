@@ -1,0 +1,13 @@
+#! /bin/bash
+
+echo "debugging application: hello"
+
+echo | java -version
+
+# go the directory where the target app class locates
+cd /work_dir/hello
+
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7777 hello
+
+
+
