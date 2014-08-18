@@ -2,6 +2,8 @@
 
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 
+rm -rf /tomcat/webapps/ROOT
+sed -i 's#</Host>#<Context path="" docBase="welcome" /></Host>#g' /tomcat/conf/server.xml
 cp $base_dir/welcome/target/welcome*.war /tomcat/webapps/welcome.war
 
 /tomcat/bin/startup.sh && tail -f /tomcat/logs/catalina.out

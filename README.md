@@ -13,15 +13,23 @@ Sample project for testing dCloud
 
 
 * How to Run
-  
-  1. git clone https://github.com/wsxiaozhang/ProjectND.git
-  2. $cd ./ProjectND
-  3. update application under ./work_dir/welcome
+  * Local Dev and Test
+
+    1. git clone https://github.com/wsxiaozhang/ProjectND.git
+    2. $cd ./ProjectND
+    3. update application under ./work_dir/welcome
       e.g. change codes in status.jsp
-  4. go back to project root path /ProjectND
-  5. $sudo ./build.sh 
-  6. $sudo ./deploy.sh 8080:8080
-  7. in browser, visit http://127.0.0.1:8080/welcome
+    4. go back to project root path /ProjectND
+    5. $sudo ./build.sh 
+    6. $sudo ./deploy.sh 8080:8080
+    7. in browser, visit http://127.0.0.1:8080/welcome
+  
+  * Publish app to cloud
+    following above 5 steps to get application build
+    6. $sudo ./publish.sh welcome welcome.de.bluemix.cdl.ibm.com
+    7. after a while, in brower, visit http://welcome.de.bluemix.cdl.ibm.com 
+
+
 
 
 
