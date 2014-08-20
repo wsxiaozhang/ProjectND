@@ -18,14 +18,14 @@ if [ "$base_image" == "" ]; then
 fi
 docker build --force-rm=true -t "$base_image"  $base_dir/local_image/build_image
 if [ "$?" == "0" ]; then
-docker run --rm=true -v $work_dir:/work_dir  $base_image  "/bin/bash" "/work_dir/build_app"
-if [ "$?" == "0" ]; then
-  echo "run image successfully!"
-  exit 0
-else
-  echo "run image failed!!"
-  exit 1
-fi
+  docker run --rm=true -v $work_dir:/work_dir  $base_image  "/bin/bash" "/work_dir/build_app"
+  if [ "$?" == "0" ]; then
+    echo "run image successfully!"
+    exit 0
+  else
+    echo "run image failed!!"
+    exit 1
+  fi
 else
   echo "build image failed!!"
   exit 1
