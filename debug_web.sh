@@ -29,7 +29,7 @@ done
 
 debug_image="${base_image}"
 
-if docker build --rm -t "$debug_image" $base_dir/local_image/debug_image; then
+if docker build --rm -t "$debug_image" $base_dir/local_image/debug_web_image; then
   docker run -it --rm -v $work_dir:/work_dir $ports_str "$debug_image"
   echo "exit from debug mode"
 else
