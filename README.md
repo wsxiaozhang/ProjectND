@@ -31,7 +31,7 @@ Sample project for testing dCloud
       just following above 5 steps to get application build. 
       Note: in order to keep local test independent to debug, pls use bind different ports for application running. There has to be only one application instance binds to one specific port on the host OS.
       In this sample of debug, the application (welcome_servlet) listens to 8888 for web request, while it listens to 7778 for accepting debug packets.
-      6. $sudo ./debug_web.sh
+      6. $sudo ./debug_web.sh 8888:8080 7778:8078
       7. in eclipse, edit "debug configuration" against the web application project. 
           New a remote debug configuration, by attaching to "localhost", "7778" and "dt_socket" stack.
           Apply those changes, and go on debug with this configuration.
@@ -42,8 +42,9 @@ Sample project for testing dCloud
   * Publish app to cloud
     
     just following above 5 steps of "Local Dev and Test" to get application build
-    6. $sudo ./publish.sh welcome welcome.de.bluemix.cdl.ibm.com
-    7. after a while, in brower, visit http://welcome.de.bluemix.cdl.ibm.com 
+    6. $sudo ./publish.sh welcome welcome_image             (note: ./publish project_name image_name)  
+    7. $sudo ./deploy.sh welcome welcome_image welcome      (note: ./deploy.sh app_name image_name host)
+    8. after a while, in brower, visit http://welcome.de.bluemix.cdl.ibm.com 
 
 
 * Project structure 
