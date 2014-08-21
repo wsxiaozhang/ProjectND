@@ -10,5 +10,7 @@
 
 <body>
 <h1>Welcome to dCloud! Have fun!</hi>
+<br/>
+<a href="/hello">click me</a>
 </body>
 </html>

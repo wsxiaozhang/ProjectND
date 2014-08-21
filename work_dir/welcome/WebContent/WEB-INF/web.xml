@@ -4,18 +4,12 @@
   <welcome-file-list>
     <welcome-file>status.jsp</welcome-file>
   </welcome-file-list>
-  <!-- <servlet>
-    <servlet-name>EstadoApp</servlet-name>
-    <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
-    <init-param>
-    <param-name>javax.ws.rs.Application</param-name>
-    <param-value>com.ibm.estado.rest.EstadoApplication</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
+  <servlet>
+   <servlet-name>hello</servlet-name>
+   <servlet-class>HelloServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>EstadoApp</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
+  <servlet-name>hello</servlet-name>
+  <url-pattern>/hello</url-pattern>
   </servlet-mapping>
-   -->
 </web-app>
