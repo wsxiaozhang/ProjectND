@@ -42,8 +42,8 @@ Sample project for testing dCloud
   * Publish app to cloud
     
     just following above 5 steps of "Local Dev and Test" to get application build
-    6. $sudo ./publish.sh welcome welcome_image             (note: ./publish project_name image_name)  
-    7. $sudo ./deploy.sh welcome welcome_image welcome      (note: ./deploy.sh app_name image_name host)
+    6. $sudo ./publish.sh welcome 9.181.27.216/welcome_image             (note: ./publish project_name image_name)  
+    7. $sudo ./deploy.sh welcome 9.181.27.216/welcome_image welcome      (note: ./deploy.sh app_name image_name host)
     8. after a while, in brower, visit http://welcome.de.bluemix.cdl.ibm.com 
 
 
