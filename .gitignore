@@ -2,3 +2,4 @@
 ./work_dir/.m2/*
 ./.tmp_build
 ./.tmp_deploy
+./*.sh~
