@@ -13,7 +13,7 @@ image_name="${p_name}_deploy"
 image_dir="$base_dir/../$p_name/local_image/run_image"
 work_dir="$base_dir/../$p_name"
 ports="$*"
-ports_arr=(${ports})
+ports_arr=("$ports")
 ports_str=" "
 for port in $ports_arr 
 do 
