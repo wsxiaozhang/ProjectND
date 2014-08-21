@@ -22,7 +22,7 @@ work_dir=$base_dir/work_dir
 #shift
 # get all the ports
 ports="$*"
-ports_arr=(${ports})
+ports_arr=("$ports")
 ports_str=" "
 for port in $ports_arr
 do
