@@ -9,6 +9,8 @@
 </head>
 
 <body>
-<h1>welcome xs</hi>
+<h1>Welcome to dCloud! Have fun!</hi>
+<br/>
+<a href="/hello">click me</a>
 </body>
 </html>
