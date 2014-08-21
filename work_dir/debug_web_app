@@ -12,8 +12,17 @@ cd /tomcat/bin
 ./catalina.sh version
 
 # set catalina env as debug mode
+debug_port=8078
 touch setenv.sh
-echo "export CATALINA_OPTS=\"-agentlib:jdwp=transport=dt_socket,address=8078,server=y,suspend=n\"" >> setenv.sh
+echo "export CATALINA_OPTS=\"-agentlib:jdwp=transport=dt_socket,address=$debug_port,server=y,suspend=n\"" >> setenv.sh
 
 # start tomcat
 ./startup.sh && tail -f /tomcat/logs/catalina.out
+
+
+if [ "$?" == "0" ]; then
+	echo "debugging Tomcat application on port $debug_port ..."
+else
+	echo "failed to start Tomcat on port $debug_port"
+	exit 1
+fi
