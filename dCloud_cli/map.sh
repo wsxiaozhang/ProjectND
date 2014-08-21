@@ -18,7 +18,7 @@ marathon_api="$marathon_api"
 etcdctl="$base_dir/etcdctl"
 log_file="${log_dir}/map.log"
 
-if curl -s -X GET -H 'Content-Type: application/json' http://$marathon_api/v2/apps/$app | grep -q "does not exist"
+if curl -s -X GET -H 'Content-Type: application/json' $marathon_api/v2/apps/$app | grep -q "does not exist"
 then
   error "haven't created app $app yet!"
   exit 1
