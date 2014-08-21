@@ -1,21 +1,21 @@
 #! /bin/bash
 
 if [ "$#" -eq "0" ]; then
-  echo "you can use: $0 port port ... to set port mapping from host to container" 
+  echo "you can use: $0 port port ... to set port mapping from host to application" 
   echo "for example: $0 8080 8888:8088"
 fi
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 #project_name="$1"
 #shift
 #base_image="${project_name}_run_image"
-deploy_cache=${base_dir}/.tmp_deploy
-if [ -f "$deploy_cache" ];then
-  base_image=`cat $deploy_cache`
+run_cache=${base_dir}/.tmp_run
+if [ -f "$run_cache" ];then
+  base_image=`cat $run_cache`
 fi
  
 if [ "$base_image" == "" ]; then
   base_image=`date +%N`
-  echo "$base_image" > $deploy_cache
+  echo "$base_image" > $run_cache
 fi
 work_dir=${base_dir}/work_dir
 ports="$*"
