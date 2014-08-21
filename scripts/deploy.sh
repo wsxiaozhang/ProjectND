@@ -1,36 +1,35 @@
-#! /bin/bash
+#! /bin/bash 
 
 if [ "$#" -lt "2" ]; then
-  echo "you can use: $0 project_name \"port port\" to set port mapping from host to container" 
-  echo "for example: $0 helloworld  \"8080 8888:8088 127.0.0.1:8080:8080\" "
+  echo "you can use: $0 app_name image_name host" 
   exit 1
 fi
 base_dir="$(cd "$(dirname "$0")"; pwd)"
+app_name="$1"
+image_name="$2"
+host="$3"
 
-p_name="$1"
-
-image_name="${p_name}_deploy"
-image_dir="$base_dir/../$p_name/local_image/deploy_image"
-work_dir="$base_dir/../$p_name"
-ports="$2"
-ports_arr=(${ports})
-ports_str=" "
-for port in $ports_arr 
-do 
-  ports_str="$ports_str -p $port "
-done
-docker build --force-rm=true -t "$image_name" $image_dir
-if [ "$?" == "0" ]; then
-  docker rm -f "${image_name}_container"
-  docker run --name="${image_name}_container" -d -v $work_dir:/work_dir $ports_str  $image_name  "/bin/bash" "/work_dir/run_app"
-  if [ "$?" == "0" ]; then
-    echo "run image successfully!"
-    exit 0
+if $base_dir/dCloud_cli/delete_app.sh "$app_name" > /dev/null 2>&1; then
+  $base_dir/dCloud_cli/delete_router.sh "$host" > /dev/null 2>&1
+  if $base_dir/dCloud_cli/push.sh "$app_name" "${image_name}" "1"; then
+    echo "succeed to push app $app_name"
+    if $base_dir/dCloud_cli/create_router.sh "$host"; then
+      echo "succeed to create host $host"
+      if $base_dir/dCloud_cli/map.sh "$host" "$app_name"; then
+        echo "succeed to map app $app_name to host $host"
+      else
+        echo "failed to map app $app_name to host $host"
+        exit 1
+      fi 
+    else
+      echo "failed to create host $host"
+      exit 1
+    fi
   else
-    echo "run image failed!!"
+    echo "failed to push app $app_name"
     exit 1
   fi
 else
-  echo "build image failed!!"
+  echo "faild to delete old project "$app_name" you deployed before"
   exit 1
 fi
