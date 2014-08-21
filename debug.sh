@@ -1,9 +1,11 @@
 #! /bin/bash
 
 if [ "$#" -eq "0" ]; then
-  echo "usage: $0 port1 port2 ..."
-  echo "port1 and port2 can be ip:port:port, port:port, port"
+  echo "usage: $0 [port-map]"
+  echo "       port-map can be in format like ip:host-port:app-port, host-port:app-port, app-port"
+  echo "       make sure there is at least one port-map set for establish debug connection. Meanwhile, app-port in this port-map has to be same as the one exposed by specific app script, e.g. 'debug_app'"
 fi
+
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 debug_cache=${base_dir}/.tmp_debug
 if [ -f "$debug_cache" ];then

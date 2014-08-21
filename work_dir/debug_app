@@ -7,7 +7,17 @@ echo | java -version
 # go the directory where the target app class locates
 cd /work_dir/hello
 
-java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7777 hello
+# startup JVM in debug mode
+app_main="hello"
+debug_port=7777
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$debug_port $app_main
+
+if [ "$?" == "0" ]; then
+	echo "debugging application $app_main on port $debug_port ..."
+else
+	echo "failed to start application $app_main on port $debug_port"
+	exit 1
+fi
 
 
 

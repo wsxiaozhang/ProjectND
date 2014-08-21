@@ -6,14 +6,23 @@ echo "debugging Tomcat Web application"
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 rm -rf /tomcat/webapps/ROOT
 sed -i 's#</Host>#<Context path="" docBase="welcome" /></Host>#g' /tomcat/conf/server.xml
-cp $base_dir/welcome/target/welcome*.war /tomcat/webapps/welcome.war
+cp $base_dir/welcome_servlet/target/welcome*.war /tomcat/webapps/welcome.war
 
 cd /tomcat/bin
 ./catalina.sh version
 
 # set catalina env as debug mode
+debug_port=8078
 touch setenv.sh
-echo "export CATALINA_OPTS=\"-agentlib:jdwp=transport=dt_socket,address=8078,server=y,suspend=n\"" >> setenv.sh
+echo "export CATALINA_OPTS=\"-agentlib:jdwp=transport=dt_socket,address=$debug_port,server=y,suspend=n\"" >> setenv.sh
 
 # start tomcat
 ./startup.sh && tail -f /tomcat/logs/catalina.out
+
+
+if [ "$?" == "0" ]; then
+	echo "debugging Tomcat application on port $debug_port ..."
+else
+	echo "failed to start Tomcat on port $debug_port"
+	exit 1
+fi
