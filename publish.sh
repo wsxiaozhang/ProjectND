@@ -6,7 +6,8 @@ if [ "$#" -lt "2" ]; then
 fi
 base_dir="$(cd "$(dirname "$0")"; pwd)"
 project_name="$1"
-base_image="$2"
+base_image="${project_name}_publish_image"
+target_image="$2"
  
 work_dir="${base_dir}/work_dir"
 image_dir="$base_dir/local_image/deploy_image"
@@ -16,7 +17,7 @@ cp -r $work_dir/$project_name $work_dir/run_app "$image_work_dir"/ > /dev/null
 docker build --force-rm=true -t "$base_image" "$image_dir"
 if [ "$?" == "0" ]; then
   rm -rf "$image_work_dir"
-  $base_dir/dCloud_cli/publish_image.sh $base_image $base_image
+  $base_dir/dCloud_cli/publish_image.sh $base_image $target_image
 else
   rm -rf "$image_work_dir"
   echo "build image failed!!"

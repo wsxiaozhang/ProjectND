@@ -21,7 +21,7 @@ image_name="$2"
 instances="$3"
 version="$4"
 
-MANIFEST_TEMPLATE="{\"container\":{\"image\":\"docker:///${docker_host}:${docker_port}/$image_name\"},\"id\":\"$app_name\",\"cpus\":\"1\",\"mem\":\"512\",\"instances\":\"$instances\"}"
+MANIFEST_TEMPLATE="{\"container\":{\"image\":\"docker:///$image_name\"},\"id\":\"$app_name\",\"cpus\":\"1\",\"mem\":\"512\",\"instances\":\"$instances\"}"
 #MANIFEST_TEMPLATE="{\"container\":{\"image\":\"docker:///${docker_host}:${docker_port}/$image_name\"},\"id\":\"$app_name\",\"instances\":\"$instances\"}"
 
 status_code=`curl -o /dev/null -s -X POST -H "Content-Type: application/json" -w %{http_code} $marathon_api/v2/apps -d "$MANIFEST_TEMPLATE"`

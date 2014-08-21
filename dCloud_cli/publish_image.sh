@@ -18,12 +18,12 @@ log_file="$log_dir/publish_detail.log"
 source_image_name="$1"
 publish_image_name="$2"
 
-docker tag "${source_image_name}" $docker_host/"${publish_image_name}" >> "$log_file" 2>&1
+docker tag "${source_image_name}" "${publish_image_name}" >> "$log_file" 2>&1
 if [ "$?" != "0" ]; then
   error "failed to change tag ${source_image_name} to $docker_host/"${publish_image_name}""
   exit 1
 else
-  docker push $docker_host/"${publish_image_name}" >> "$log_file" 2>&1
+  docker push "${publish_image_name}" >> "$log_file" 2>&1
   if [ "$?" != "0" ]; then
     error "failed to push $docker_host/"${publish_image_name}" to registry"
     exit 1
