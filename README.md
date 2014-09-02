@@ -22,7 +22,7 @@ Sample project for testing dCloud
       e.g. change codes in status.jsp
     4. go back to project root path /ProjectND
     5. $sudo ./build.sh 
-    6. $sudo ./deploy.sh 8080:8080
+    6. $sudo ./run.sh 8080:8080
     7. in browser, visit http://127.0.0.1:8080/welcome
   
   * Local Debug
@@ -39,11 +39,13 @@ Sample project for testing dCloud
       8. in browser, visit http://127.0.0.1:8888/hello and click on the hyperlink to trigger a servlet action
       9. in eclipse, the debugger should run to the latest breakpoint in application code.
   
-  * Publish app to cloud
+  * Deploy application in cloud
     
     just following above 5 steps of "Local Dev and Test" to get application build
-    6. $sudo ./publish.sh welcome 9.181.27.216/welcome_image             (note: ./publish project_name image_name)  
+    6. $sudo ./publish.sh welcome 9.181.27.216/welcome_image             (note: ./publish project_name image_name)
+       publish application build to private image repository
     7. $sudo ./deploy.sh welcome 9.181.27.216/welcome_image welcome      (note: ./deploy.sh app_name image_name host)
+       deploy application in cloud by attaching given host as sub-domain
     8. after a while, in brower, visit http://welcome.de.bluemix.cdl.ibm.com 
 
 
